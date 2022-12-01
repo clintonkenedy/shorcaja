@@ -1,44 +1,11 @@
 @extends('layout.app')
 @section('content')
 
-<h1>hola</h1>
-<div class="container">
-    <div class="card">
 
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-</div>
-
-{{--<div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-        <h5 class="text-white h4">Collapsed content</h5>
-        <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-</div>
-<div class="container" id="buscar">
-    <form class="d-flex" role="search">
---}}{{--        <input class="form-control me-2" id="buscador" type="search" placeholder="Search" aria-label="Search">--}}{{--
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <select class="form-select selectv" id="selectv1" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div>--}}
-{{--
-<div id="buscar">
-    <form>
-        <input type="text" id="buscador" name="name" placeholder="busca" autocomplete="off" />
-    </form>
-</div>--}}
 <div class="container">
+
+
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,21 +40,31 @@
 
 @section('js')
     <script>
+        function put(id){
+            let data={
+                'name': 'CLINTON',
+                'surname': 'KENEDY'
+            }
+            fetch('tickets/'+id, {
+                headers:{
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                },
+                method:'PUT',
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(function(result){
+                    //alert(result);
+                    console.log(result);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
 
 
-        // Make a request for a user with a given ID
-        axios.get('/user?ID=12345')
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function () {
-                // always executed
-            });
+
 
         let json = {{ Js::from($estudiantes) }};
         console.log(json);
@@ -103,19 +80,21 @@
             let elValor = buscador.value;
             //si hay un valor
             if (elValor.length > 0) {
+
                 // busca en el json si el nombre incluye (o empieza por) el valor
                 json.forEach(j => {
+                    // location.reload();
                     //if(j.nombre.startsWith(elValor))
                     if(isNaN(elValor)){
-                        if (j.nombre.includes(elValor)) {
+                        if (j.estudiante.nombre.includes(elValor)) {
                             // si lo incluye agregalo al array de los seleccionados
                             if(seleccionados.length <10){
-                                seleccionados.push(j.nombre);
+                                seleccionados.push(j);
                             }
                         }
                     }
                     else {
-                        if (j.codigo_mat.includes(elValor)) {
+                        if (j.estudiante.codigo_mat.includes(elValor)) {
                             // si lo incluye agregalo al array de los seleccionados
                             if(seleccionados.length <10){
                                 seleccionados.push(j);
@@ -134,23 +113,62 @@
 
                 //para cada elemento selccionado
                 if(seleccionados.length!=0){
+                    let addticket = document.createElement("a");
+                    addticket.className="btn btn-success";
+                    addticket.addEventListener('click', function handleClick(event) {
+                        // put(s.id);
+                        // let estado = document.querySelector("#pagar"+s.id);
+                        // estado.textContent="Pagado";
+                        // s.estado="Pagado";
+                        let some= seleccionados.every(t=>t.estudiante_id==seleccionados[0].estudiante_id);
+
+                        console.log(some);
+                        let p1 = document.createElement("p");
+                        p1.textContent="ADDDDDDDDDDDDDDD";
+                        fragment.appendChild(p1);
+
+                        console.log(some);
+
+                    });
+                    addticket.textContent="ADD";
+
                     seleccionados.forEach(s => {
                         //cuyo innerHTML es el nombre seleccionado
                         //p.innerHTML = s.nombre;
 
                         //p.textContent = s.nombre;
-                        let bpagar = document.createElement("a")
-                        bpagar.href="#";
+
+
+                        let bpagar = document.createElement("a");
+                        //bpagar.href="#";
                         bpagar.className="btn btn-primary";
-                        bpagar.textContent="Pagado";
+                        bpagar.addEventListener('click', function handleClick(event) {
+                            put(s.id);
+                            let estado = document.querySelector("#pagar"+s.id);
+                            estado.textContent="Pagado";
+                            s.estado="Pagado";
+                            console.log(s.id+'element clicked 🎉🎉🎉'+s.estado, event);
+                        });
+                        bpagar.textContent="Pagar";
+
+                        let estado = document.createElement("span");
+                        estado.className="badge text-bg-info";
+                        estado.id="pagar"+s.id;
+                        estado.textContent=s.estado;
 
                         let nombre = document.createElement("p");
                         nombre.className="card-text";
-                        nombre.textContent=s.nombre;
+                        nombre.textContent=s.estudiante.nombre;
+
+                        let cticket = document.createElement("p");
+                        cticket.className="card-text";
+                        cticket.textContent=s.codigo;
 
                         let cardb = document.createElement("div");
                         cardb.className="card-body";
                         cardb.appendChild(nombre);
+                        cardb.appendChild(cticket);
+                        cardb.appendChild(estado);
                         cardb.appendChild(bpagar);
 
                         let cardh = document.createElement("div"); // <div></div>
@@ -165,7 +183,9 @@
 
                         //y agregalo al fragmento
                         fragment.appendChild(card);
+
                     });
+                    fragment.appendChild(addticket);
                 }else{
                     let p = document.createElement("p");
                     p.textContent="no rsultados";

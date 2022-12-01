@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -15,9 +16,11 @@ class EstudianteController extends Controller
     public function index()
     {
         //
-        $estudiantes = Estudiante::all();
+//        $estudiantes = Estudiante::all();
+        $estudiantes = Ticket::with('estudiante')->get();
 
         return view('estudiante.index', compact('estudiantes'));
+
     }
 
     /**
@@ -70,9 +73,14 @@ class EstudianteController extends Controller
      * @param  \App\Models\Estudiante  $estudiante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Estudiante $estudiante)
+    public function update(Request $request, $id)
     {
         //
+        $est = Estudiante::find($id);
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $message = "tu nombre es ".$est->nombre."y tu apellido es ".$surname."";
+        return response()->json($message);
     }
 
     /**
@@ -84,5 +92,15 @@ class EstudianteController extends Controller
     public function destroy(Estudiante $estudiante)
     {
         //
+    }
+    public function est(){
+        $est=Estudiante::all();
+        return response()->json($est);
+    }
+    public function gaa(request $request){
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $message = "tu nombre es ".$name."y tu apellido es ".$surname."";
+        return response()->json($message);
     }
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     use HasFactory;
+    public function estudiante(){
+        return $this->belongsTo(Estudiante::class);
+    }
 }
