@@ -13,7 +13,7 @@
                 <h2>Simple QR Code</h2>
             </div>
             <div class="card-body">
-                {!! QrCode::size(300)->generate('prueba'); !!}
+                {!! QrCode::size(300)->generate("2"); !!}
             </div>
         </div>
         {{-- <div class="card">

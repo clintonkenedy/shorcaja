@@ -29,6 +29,10 @@ class TicketController extends Controller
     public function create()
     {
         //
+        $estudiantesT = Ticket::with('estudiante')->get();
+        $estudiantes = Estudiante::all();
+
+        return view('ticket.create', compact('estudiantes','estudiantesT'));
     }
 
     /**

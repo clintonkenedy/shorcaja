@@ -6,6 +6,7 @@
   </head>
   <body>
     <video id="preview"></video>
+
     <input type="text" id="qrcheck">
     <script type="text/javascript">
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });

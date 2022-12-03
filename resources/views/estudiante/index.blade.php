@@ -23,6 +23,10 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-md">
+
+                            <a class="btn btn-primary mb-3" href="{{route('tickets.create')}}">Agregar Nuevo ticket</a>
+                        </div>
                     </div>
                 </div>
             </div>
