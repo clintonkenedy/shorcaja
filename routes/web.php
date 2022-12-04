@@ -35,3 +35,7 @@ Route::get('formulary2',function(){
     return view('estudiante.prueba');
 });
 Route::post('proccess2',[EstudianteController::class,'gaa']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

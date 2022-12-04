@@ -9,14 +9,25 @@
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Codigo Estudiante</label>
-                            <input type="text" class="form-control" id="inputCodEst">
+                            <label for="exampleDataList" class="form-label">Codigo Estudiante</label>
+                            <input class="form-control" list="datalistOptions" id="inputCodEst" placeholder="Type to search..." autocomplete="off">
+                            <datalist id="datalistOptions">
+
+                            </datalist>
                         </div>
+
                         <div class="col-md-6">
                             <label for="inputAddress" class="form-label">nombre</label>
                             <input type="text" class="form-control" id="inputNombre" disabled>
                         </div>
                         <h5 id="ticketsentregados"></h5>
+
+                        <label for="exampleDataList" class="form-label">Datalist example</label>
+                        <input class="form-control" list="datalistOptions" id="inputCodEst" placeholder="Type to search..." autocomplete="off">
+                        <datalist id="datalistOptions">
+                        </datalist>
+
+
 
                         <div class="col-12">
                             <button id="buscarcodigo"  class="btn btn-primary">buscar</button>
@@ -75,6 +86,19 @@
         let Es = {{ Js::from($estudiantes) }};
         console.log(Es);
         console.log(EsT);
+        let dataList = document.getElementById('datalistOptions');
+
+
+
+        Es.forEach(e=>{
+            let option = document.createElement('option');
+            // Set the value using the item in the JSON array.
+            option.value = e.codigo_mat;
+            // Add the <option> element to the <datalist>.
+            dataList.appendChild(option);
+        });
+
+
 
         buscarcodigo.onclick = function () {
             let inputValueB = document.getElementById("inputCodEst").value;
