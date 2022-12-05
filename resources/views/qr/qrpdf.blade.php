@@ -7,22 +7,24 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid m-1">
         <div class="row">
             @if (count($tickets) < 1)
                 <h1>NO HAY TICKETS EN LA BD</h1>
             @else
                 @foreach ($tickets as $ticket)
-                <div class="card" style="width: 10rem">
-                    <div class="card-header">{{ '# '.$ticket->id}}</div>
+                {{-- <div class="card">
                     <div class="card-body">
-                    {{-- {{$enlace}} --}}
+                    <h6 class="card-title">{{ '# '.$ticket->id}}</h6>
                     {!! QrCode::size(100)->generate(url("/?id=".Crypt::encryptString($ticket->id))); !!}
                     </div>
+                </div> --}}
+                <div class="m-1" style="">
+                    <h6 class="">{{ '# '.$ticket->id}}</h6>
+                    {{-- {{$enlace}} --}}
+                    {!! QrCode::size(100)->generate(url("/?id=".Crypt::encryptString($ticket->id))); !!}
                 </div>
                 @endforeach
             @endif
