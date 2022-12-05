@@ -36,9 +36,9 @@ class TicketController extends Controller
 
             // return response()->json($ticket);
             // return view('evento.invitacion', compact('ticket'));
-            return view('evento.invi_template');
+            return view('evento.invi_prueba', compact('ticket'));
         }
-        return view('evento.invi_template');
+        return view('evento.invi_prueba');
     }
 
     public function qrinvitacion(Request $request)
