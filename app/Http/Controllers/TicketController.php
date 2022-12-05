@@ -54,6 +54,21 @@ class TicketController extends Controller
 
         return view('qr.qrpdf', compact('tickets'));
     }
+    public function qrcachibos(Request $request)
+    {
+
+        $tickets = Ticket::all();
+        // $id = '2';
+        // $enlaces[] = false;
+        // // dd($tickets);
+        // for ($i=1; $i < 10; $i++) {
+        // }
+
+        // $pdf = Pdf::loadView('qr.qrpdf', ['enlace' => $enlace]);
+        // return $pdf->stream();
+
+        return view('qr.qrpdf', compact('tickets'));
+    }
 
     public function update_ticket(Request $request, $id)
     {

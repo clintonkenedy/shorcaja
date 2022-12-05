@@ -20,5 +20,16 @@ class DatabaseSeeder extends Seeder
              'email' => 'admin@gmail.com',
              'password' =>  bcrypt('administrador'),
          ]);
+
+         for( $i=1000;$i<1310;$i++){
+             \App\Models\Ticket::create([
+                 'codigo'=> $i,
+                 'estado'=>'Libre',
+             ]);
+         }
+
+
+
+
     }
 }

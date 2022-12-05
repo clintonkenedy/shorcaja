@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('codigo',10)->nullable();
-            $table->enum('estado',['Entregado','Pagado','Recogido'])->nullable();
+            $table->enum('estado',['Libre','Entregado','Pagado','Usado'])->nullable();
+            $table->bigInteger('contador')->default(0)->nullable();
             $table->foreignId('estudiante_id')->nullable()->constrained();
             $table->timestamps();
         });
