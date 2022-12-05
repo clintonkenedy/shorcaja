@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
              'password' =>  bcrypt('administrador'),
          ]);
 
-         for( $i=1000;$i<1310;$i++){
+         for( $i=1000;$i<1320;$i++){
              \App\Models\Ticket::create([
                  'codigo'=> $i,
                  'estado'=>'Libre',

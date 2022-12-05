@@ -27,6 +27,12 @@
                         <datalist id="datalistOptions">
                         </datalist>
 
+                        <select class="js-example-disabled-results">
+                            <option value="one">First</option>
+                            <option value="two" disabled="disabled">Second (disabled)</option>
+                            <option value="three">Third</option>
+                        </select>
+
 
 
                         <div class="col-12">
@@ -58,6 +64,17 @@
                             <option value="Secundaria">Secundaria</option>
                         </select>
                     </div>
+                    <select class="selectpicker">
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Barbecue</option>
+                    </select>
+                    <select class="selectpicker" data-live-search="true">
+                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                    </select>
+ss
 
                     <table class="table" id="resumen">
                         <thead>
@@ -75,13 +92,20 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+
 
 @stop
 
 @section('js')
 
     <script>
+        var $disabledResults = $(".js-example-disabled-results");
+        $disabledResults.select2();
+        // To style only selects with the my-select class
+        $('.my-select').selectpicker();
         let EsT = {{ Js::from($estudiantesT) }};
         let Es = {{ Js::from($estudiantes) }};
         console.log(Es);
