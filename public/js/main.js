@@ -39,6 +39,11 @@
         $(this).css('background-image', 'url(' + bg + ')');
     });
 
+    $('.set-bg2').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
+
     //Search Switch
     $('.search-switch').on('click', function () {
         $('.search-model').fadeIn(400);

@@ -35,28 +35,14 @@ class TicketController extends Controller
             $ticket = Ticket::find($id);
 
             // return response()->json($ticket);
-            return view('evento.invitacion', compact('ticket'));
+            // return view('evento.invitacion', compact('ticket'));
+            return view('evento.invi_template');
         }
         return view('evento.invi_template');
     }
 
     public function qrinvitacion(Request $request)
     {
-        $tickets = Ticket::all();
-        // $id = '2';
-        // $enlaces[] = false;
-        // // dd($tickets);
-        // for ($i=1; $i < 10; $i++) {
-        // }
-
-        // $pdf = Pdf::loadView('qr.qrpdf', ['enlace' => $enlace]);
-        // return $pdf->stream();
-
-        return view('qr.qrpdf', compact('tickets'));
-    }
-    public function qrcachibos(Request $request)
-    {
-
         $tickets = Ticket::all();
         // $id = '2';
         // $enlaces[] = false;
@@ -92,10 +78,6 @@ class TicketController extends Controller
     public function create()
     {
         //
-        $estudiantesT = Ticket::with('estudiante')->get();
-        $estudiantes = Estudiante::all();
-
-        return view('ticket.create', compact('estudiantes','estudiantesT'));
     }
 
     /**
