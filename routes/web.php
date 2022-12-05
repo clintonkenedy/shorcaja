@@ -16,20 +16,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/qrcheck', function () {
     return view('qr.qrcheck');
 });
 
+Route::get('/',[TicketController::class, 'invitacion']);
+Route::get('qrcreate',[TicketController::class,'qrinvitacion']);
+Route::put('validar/{id}',[TicketController::class,'update_ticket']);
 
 
 Route::resource('estudiantes',EstudianteController::class);
 Route::resource('tickets',TicketController::class);
 Route::get('est',[EstudianteController::class,'est']);
-Route::get('qrcreate',[QrCodeController::class,'index']);
 //Route::post('gaa',[EstudianteController::class,'gaa']);
 Route::get('formulary2',function(){
     return view('estudiante.prueba');
