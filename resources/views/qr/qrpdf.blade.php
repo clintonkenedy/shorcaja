@@ -22,9 +22,9 @@
                     </div>
                 </div> --}}
                 <div class="m-1" style="">
-                    <h6 class="">{{ '# '.$ticket->id}}</h6>
+                    <h6 class="">{{ '# '.$ticket->codigo}}</h6>
                     {{-- {{$enlace}} --}}
-                    {!! QrCode::size(100)->generate(url("/?id=".Crypt::encryptString($ticket->id))); !!}
+                    {!! QrCode::size(120)->generate(url("/?id=".Crypt::encryptString($ticket->id))); !!}
                 </div>
                 @endforeach
             @endif
