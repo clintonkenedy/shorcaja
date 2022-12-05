@@ -27,12 +27,19 @@
                             <h5 class="text-white"><span class="badge bg-success"> {{$ticket->estado}} </span></h5>
                             @endif
                         </h5>
-                        <p class="card-text">Propietario <br> <b>{{$ticket->estudiante->nombre." ". $ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom}}</b></p>
-                        <form action="{{url("validar/$ticket->id")}}" method="post">
-                            @method('PUT')
-                            @csrf
-                            <button type="submit" class="btn btn-success" >Validar</button>
-                        </form>
+
+
+                        @if($ticket->estudiante_id!=null)
+                            <p class="card-text">Propietario <br> <b>{{$ticket->estudiante->nombre." ". $ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom}}</b></p>
+                        @endif
+                        @if(Auth::check())
+                            <form action="{{url("validar/$ticket->id")}}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <button type="submit" class="btn btn-success" >Validar</button>
+                            </form>
+                        @endif
+
 
                     </center>
                 </div>
