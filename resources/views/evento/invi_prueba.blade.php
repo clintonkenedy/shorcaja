@@ -173,43 +173,34 @@
     </nav> --}}
 
         <!-- Header Section Begin -->
-        <header class="header">
-            <div class="header__top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-7">
-                            <div class="header__top__left">
-                                <p>Ven y disfruta con tus amigos.</p>
-                            </div>
+
+    @if (Auth::check())
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3 col-md-7">
+                        <div class="header__top__left">
+                            <p>Estas logeado</p>
                         </div>
-                        <div class="col-lg-6 col-md-5 text-white">
-                            @auth
-                                {{Auth::user()->name}}
-                            @endauth
-                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-5 text-white">
+                        Usuario: {{Auth::user()->name}}
                     </div>
                 </div>
             </div>
-            {{-- <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="header__logo">
-                            <h2>Recepcion al Cachimbo Sistemico</h2>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-        </header>
-        <!-- Header Section End -->
-    @auth
+        </div>
+    </header>
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <div class="card" style="width: 7x0rem">
+            <div class="card mt-3" style="width: 7x0rem">
+                <center class="mt-2">
+                    <h5 class="card-title">Administración de Ticket</h5>
+                </center>
                 @if (isset($ticket))
                 <div class="card-body">
                     <center>
-                        <h5 class="card-title">Ticket # {{$ticket->id}}
+                        <h5 class="card-title">Ticket # <b>{{$ticket->id}}</b>
                             @if ($ticket->estado==="Usado")
                             <h5 class="text-white"><span class="badge bg-secondary"> {{$ticket->estado}} </span></h5>
                             @elseif ($ticket->estado==="Pagado")
@@ -224,14 +215,14 @@
 
                         @if($ticket->estudiante_id!=null)
                             <p class="card-text">Propietario <br> <b>{{$ticket->estudiante->nombre." ". $ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom}}</b></p>
+                        @else
+                            <p class="card-text">Sin Estudiante Asignado</p>
                         @endif
-                        @if(Auth::check())
                             <form action="{{url("validar/$ticket->id")}}" method="post">
                                 @method('PUT')
                                 @csrf
                                 <button type="submit" class="btn btn-success" >Validar</button>
                             </form>
-                        @endif
 
 
                     </center>
@@ -240,22 +231,39 @@
               </div>
         </div>
     </div>
-    @endauth
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/banner1xs.jpeg" class="d-block" alt="banner2" srcset="images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
-              </div>
+    @else
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Ven y disfruta con tus amigos.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5 text-white">
+                        Usuario: {{Auth::user()->name}}
+                    </div>
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
         </div>
+    </header>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/banner1xs.jpeg" class="d-block" alt="banner2" srcset="images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    @endif
     <div class="container-fluid">
 
         <div class="row">
