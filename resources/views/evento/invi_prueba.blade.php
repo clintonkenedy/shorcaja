@@ -200,7 +200,7 @@
                 @if (isset($ticket))
                 <div class="card-body">
                     <center>
-                        <h5 class="card-title">Ticket # <b>{{$ticket->id}}</b>
+                        <h5 class="card-title">Ticket # <b>{{$ticket->codigo}}</b>
                             @if ($ticket->estado==="Usado")
                             <h5 class="text-white"><span class="badge bg-secondary"> {{$ticket->estado}} </span></h5>
                             @elseif ($ticket->estado==="Pagado")
