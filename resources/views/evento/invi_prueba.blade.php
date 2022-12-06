@@ -203,7 +203,7 @@
         </header>
         <!-- Header Section End -->
     @auth
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="card" style="width: 7x0rem">
                 @if (isset($ticket))
@@ -241,14 +241,13 @@
         </div>
     </div>
     @endauth
-    <div class="row">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="">
             <div class="carousel-inner">
+              {{-- <div class="carousel-item active">
+                <img src="images/banner1.jpg" class="d-block img-fluid fitting-image" alt="banner1" style="">
+              </div> --}}
               <div class="carousel-item active">
-                <img src="images/banner3.png" class="d-block w-100 h-80 img-fluid fitting-image" alt="banner1" style="">
-              </div>
-              <div class="carousel-item">
-                <img src="images/flayer1.svg" class="d-block w-100 h-80 img-fluid" alt="banner2">
+                <img src="images/flayer1.svg" class="d-block" alt="banner2" srcset="images/flayer1.svg 950w, images/flayer1.svg 950w, images/flayer1.svg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -260,7 +259,6 @@
               <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
     <div class="container-fluid">
 
         <div class="row">
