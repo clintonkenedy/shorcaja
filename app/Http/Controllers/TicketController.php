@@ -41,17 +41,23 @@ class TicketController extends Controller
         return view('evento.invi_prueba');
     }
 
+    public function qrcreate(Request $request)
+    {
+        return view('qr.qrcreate');
+    }
+
+
     public function qrinvitacion(Request $request)
     {
-        $tickets = Ticket::all();
-        // $id = '2';
-        // $enlaces[] = false;
-        // // dd($tickets);
-        // for ($i=1; $i < 10; $i++) {
-        // }
+        if ($request->desde > $request->hasta) {
+            return "Ingrese bien los números";
+        }
 
-        // $pdf = Pdf::loadView('qr.qrpdf', ['enlace' => $enlace]);
-        // return $pdf->stream();
+        try {
+            $tickets = Ticket::all()->where('id','>=',$request->desde)->where('id','<=',$request->hasta);
+        } catch (\Throwable $th) {
+            return "Fuera de Limite";
+        }
 
         return view('qr.qrpdf', compact('tickets'));
     }
