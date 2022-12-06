@@ -243,11 +243,8 @@
     @endauth
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="">
             <div class="carousel-inner">
-              {{-- <div class="carousel-item active">
-                <img src="images/banner1.jpg" class="d-block img-fluid fitting-image" alt="banner1" style="">
-              </div> --}}
               <div class="carousel-item active">
-                <img src="images/flayer1.svg" class="d-block" alt="banner2" srcset="images/flayer1.svg 950w, images/flayer1.svg 950w, images/flayer1.svg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
+                <img src="images/banner1xs.jpeg" class="d-block" alt="banner2" srcset="images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

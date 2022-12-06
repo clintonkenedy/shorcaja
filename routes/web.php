@@ -25,8 +25,8 @@ Route::get('/qrcheck', function () {
 });
 
 Route::get('/',[TicketController::class, 'invitacion']);
-Route::get('qrcreate',[TicketController::class,'qrcreate']);
-Route::get('generar',[TicketController::class,'qrinvitacion'])->name('qrinvitacion');
+// Route::get('qrcreate',[TicketController::class,'qrcreate']);
+// Route::get('generar',[TicketController::class,'qrinvitacion'])->name('qrinvitacion');
 Route::put('validar/{id}',[TicketController::class,'update_ticket']);
 
 
@@ -39,6 +39,6 @@ Route::get('formulary2',function(){
 });
 Route::post('proccess2',[EstudianteController::class,'gaa']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
