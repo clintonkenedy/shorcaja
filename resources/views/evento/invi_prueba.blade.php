@@ -242,7 +242,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5 text-white">
-                        Usuario: {{Auth::user()->name}}
+
                     </div>
                 </div>
             </div>
