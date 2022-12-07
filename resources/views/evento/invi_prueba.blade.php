@@ -251,7 +251,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="images/banner1xs.jpeg" class="d-block" alt="banner2" srcset="images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w, images/banner1xs.jpeg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
+            <img src="images/banner1xs.jpg" class="d-block" alt="banner1" srcset="images/banner1xs.jpg 950w, images/banner1xs.jpg 950w, images/banner1xs.jpg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
+          </div>
+          <div class="carousel-item">
+            <img src="images/banner2xs.jpg" class="d-block" alt="banner2" srcset="images/banner2xs.jpg 950w, images/banner2xs.jpg 950w, images/banner2xs.jpg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="">
+          </div>
+          <div class="carousel-item">
+            <img src="images/banner3xs.jpg" class="d-block" alt="banner3" srcset="images/banner3xs.jpg 950w, images/banner3xs.jpg 950w, images/banner3xs.jpg 950w" sizes="(max-width: 340px) 340px, (max-width: 410px) 470px, (max-width: 500px) 500px, (max-width: 900px) 990px, 1920px" style="width: 720px; height: 553px; object-fit: cover;">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -349,17 +355,23 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <ol>
-                <li>Himno Nacional del Perú.</li>
-                <li>Palabras de Bienvenida.</li>
-                <li>Remate de Cachimbo Sistémico.</li>
-                <li>Presentación de Cachimbos y entregra de recordatorios.</li>
-                <li>Elección de Miss y Mister Sistémico 2022-II.</li>
-                <li>Palabras de agradecimiento.</li>
-                <li>Brindis de Honor.</li>
-                <li>Palabras de agradecimiento a cargo del presidente dela Promocion 2022-II.</li>
-                <li>Inicio de fiesta de gala: Amenizan Chelaband y Los Jaggers.</li>
-            </ol>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xd-12">
+                        <ol>
+                            <li>Himno Nacional del Perú.</li>
+                            <li>Palabras de Bienvenida.</li>
+                            <li>Remate de Cachimbo Sistémico.</li>
+                            <li>Presentación de Cachimbos y entregra de recordatorios.</li>
+                            <li>Elección de Miss y Mister Sistémico 2022-II.</li>
+                            <li>Palabras de agradecimiento.</li>
+                            <li>Brindis de Honor.</li>
+                            <li>Palabras de agradecimiento a cargo del presidente dela Promocion 2022-II.</li>
+                            <li>Inicio de fiesta de gala: Amenizan Chelaband y Los Jaggers.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
