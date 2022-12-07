@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Ven y disfruta con tus amigos.</p>
+                            <p>Ven y disfruta con tus amigos. <i class="fa fa-circle" aria-hidden="true"></i></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">

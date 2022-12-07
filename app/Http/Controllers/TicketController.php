@@ -32,7 +32,9 @@ class TicketController extends Controller
         if($request->id){
             $id = Crypt::decryptString($request->id);
             // dd($id);
+
             $ticket = Ticket::find($id);
+            $ticket->increment("contador");
 
             // return response()->json($ticket);
             // return view('evento.invitacion', compact('ticket'));

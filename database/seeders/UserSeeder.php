@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->delete();
 
         $users = [
-            // ['name' => 'admin', 'email' => 'admin', 'password' => bcrypt('administrador')],
+            ['name' => 'admin', 'email' => 'admin', 'password' => bcrypt('administrador')],
             ['name' => 'APAZA COILA IRVING DANIEL', 'email' => '70847281', 'password' => bcrypt('143959')],
             ['name' => 'ARCE CONDORI MICHAEL RODRIGO', 'email' => '70202342', 'password' => bcrypt('180576')],
             ['name' => 'ARGAMA PAYE LUIS JOSHELIM', 'email' => '74168336', 'password' => bcrypt('093693')],
@@ -36,6 +36,14 @@ class UserSeeder extends Seeder
             ['name' => 'ROQUE YUCRA MIGUEL ANGEL', 'email' => '74705399', 'password' => bcrypt('174381')],
             ['name' => 'GOMEZ CALIZAYA KEPHLER', 'email' => '70277376', 'password' => bcrypt('161594')],
             ['name' => 'MAMANI MAMANI JHULISA SHARMELLY', 'email' => '75863799', 'password' => bcrypt('181348')],
+            ['name' => 'TAPIA RAMOS ARTURO EYCK', 'email' => '72775179', 'password' => bcrypt('181408')],
+            ['name' => 'RAMOS FLORES ARHYEL PHILIPPE', 'email' => '75689326', 'password' => bcrypt('181884')],
+            ['name' => 'ZUÑIGA ARIAS ZARUFZABE RENATO', 'email' => '71441848', 'password' => bcrypt('181199')],
+            ['name' => 'TACO AVILES MILTON HIROSHI', 'email' => '72463008', 'password' => bcrypt('181178')],
+            ['name' => 'MAMANI LARICO MARINELA GLADYS', 'email' => '71595000', 'password' => bcrypt('180581')],
+            ['name' => 'MAMANI GONZALO JHOSELYN YENIDA', 'email' => '76843472', 'password' => bcrypt('180184')],
+            ['name' => 'PARI ILLANES KAREN ANYELA', 'email' => '70111032', 'password' => bcrypt('174832')],
+            ['name' => 'VENTURA CONDORI CLINTON KENEDY', 'email' => '74947760', 'password' => bcrypt('181134')],
         ];
 
 
@@ -62,34 +70,34 @@ class UserSeeder extends Seeder
         // 163111	71027461	INCACUTIPA HUARACHI WALTER BERNABE
         // 181936	71657437	LEON CHIPANA WILLIAM WILBER
         // 164456	76541031	LIMA CECENARDO JESUS ORLANDO
-        // 180184	76843472	MAMANI GONZALO JHOSELYN YENIDA
-        // 180581	71595000	MAMANI LARICO MARINELA GLADYS
+
+
         // 174386	72471491	MAMANI LOPEZ, JULIO ELIAS
         // 174402	73777406	MAMANI SONCCO LISSBETH RUDY
         // 174401	77168808	MAQUERA ARACA LUZ PILAR
         // 135461	45241201	MERMA VILCA YESSICA VERONICA
         // 123531	73821223	MULLUNI GONZALES JUAN CARLOS
-        // 174832	70111032	PARI ILLANES KAREN ANYELA
+
         // 160878	70379898	PAURO VELASQUEZ CHRISTIAN GABINO
         // 150586	48892724	PUMA HUACASI HEBERT YURI
         // 175492	74309459	QUISPE GUTIERREZ ABRAHAM EINSTEIN
         // 142845	73352473	QUISPE MAMANI YONY SADAN
         // 170237	74600166	QUISPE QUISPE WALDIR RIVALDO
-        // 181884	75689326	RAMOS FLORES ARHYEL PHILIPPE
+
         // 180583	72872001	RAMOS HALANOCA CRISTIAN REYSCELL
         // 102123	72737934	ROSAS CEREZO LUIS MIGUEL
         // 160125	74624281	SACARI HUERTA WILSON RENE
         // 181143	74835757	SALAZAR CUTIPA JUAN MIJAEL
         // 134286	73651882	SANGA CHAHUA JOSE FREDY
         // 160403	74074397	SARDON CUTIPA CARLOS ROBERTO
-        // 181178	72463008	TACO AVILES MILTON HIROSHI
+
         // 181163	70977160	TALIZO CHAMBILLA MIGUEL ANGEL
         // 174390	70817529	TAPARA CANSAYA DENNIS HENRY
-        // 181408	72775179	TAPIA RAMOS ARTURO EYCK
-        // 181134	74947760	VENTURA CONDORI CLINTON KENEDY
+
+
         // 162041	77381979	VILLASANTE DEL CARPIO MARCELO ATILIO
         // 122128	48157560	YANCAPALLO MANUEL JOEL MARCOS
         // 171218	71568784	YUCRA MENDOZA ANGEL GABRIEL
-        // 181199	71441848	ZUÑIGA ARIAS ZARUFZABE RENATO
+
     }
 }

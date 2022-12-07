@@ -153,27 +153,6 @@
   </head>
   <body>
 
-    {{-- <nav class="navbar navbar-expand-lg" style="background-color: #918EF4;">
-        <div class="container-fluid">
-          <a class="navbar-brand text-white" href="#">Recepción al Cachimbo Sistémico</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Bases</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav> --}}
-
-        <!-- Header Section Begin -->
-
     @if (Auth::check())
     <header class="header">
         <div class="header__top">
@@ -181,7 +160,7 @@
                 <div class="row">
                     <div class="col-xs-3 col-md-7">
                         <div class="header__top__left">
-                            <p>Estas logeado</p>
+                            <p>Conectado <i class="bi bi-circle-fill" style="color: green"></i></p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-5 text-white">
@@ -195,7 +174,7 @@
         <div class="row justify-content-md-center">
             <div class="card mt-3" style="width: 7x0rem">
                 <center class="mt-2">
-                    <h5 class="card-title">Administración de Ticket</h5>
+                    <h5 class="card-title"> <b>Administración de Ticket </b></h5>
                 </center>
                 @if (isset($ticket))
                 <div class="card-body">
@@ -221,12 +200,17 @@
                             <form action="{{url("validar/$ticket->id")}}" method="post">
                                 @method('PUT')
                                 @csrf
-                                <button type="submit" class="btn btn-success" >Validar</button>
+                                <button type="submit" class="btn btn-lg btn-success" disabled>Pagado $</button>
                             </form>
+                                <button type="submit" class="btn btn-lg btn-secondary mt-3" disabled>Usado ✅</button>
 
 
                     </center>
                 </div>
+                @else
+                    <center>
+                        <h5 style="color: blueviolet">Por favor, escanee un ticket  <i class="bi bi-qr-code-scan" style="color:#111111"></i></h5>
+                    </center>
                 @endif
               </div>
         </div>
