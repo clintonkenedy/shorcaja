@@ -98,7 +98,7 @@
                         }
                     }
                     else {
-                        if (j.estudiante.codigo_mat.includes(elValor)) {
+                        if (j.codigo.includes(elValor)) {
                             // si lo incluye agregalo al array de los seleccionados
                             if(seleccionados.length <10){
                                 seleccionados.push(j);
@@ -162,7 +162,8 @@
 
                         let nombre = document.createElement("p");
                         nombre.className="card-text";
-                        nombre.textContent=s.estudiante.nombre;
+                        /*nombre.textContent=s.estudiante.nombre;*/
+                        nombre.textContent='no hay';
 
                         let cticket = document.createElement("p");
                         cticket.className="card-text";

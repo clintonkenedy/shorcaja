@@ -94,8 +94,24 @@ class TicketController extends Controller
         //
         $estudiantesT = Ticket::with('estudiante')->get();
         $estudiantes = Estudiante::all();
+        $tickets= Ticket::all();
 
-        return view('ticket.create', compact('estudiantes','estudiantesT'));
+        return view('ticket.create', compact('estudiantes','estudiantesT','tickets'));
+    }
+    public function obtenerall(){
+        $estudiantesT = Ticket::with('estudiante')->get();
+
+        return response()->json($estudiantesT);
+    }
+    public function obtenerest(){
+        $estudiantesT = Estudiante::all();
+
+        return response()->json($estudiantesT);
+    }
+    public function obtenertick(){
+        $estudiantesT = Ticket::all();
+
+        return response()->json($estudiantesT);
     }
 
     /**
@@ -107,6 +123,14 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        $name = $request->input('name');
+        $tickets = $request->input('surname');
+//        $message = "tu nombre es ".$name."y tu apellido es ".$surname[1]."";
+        $message = $tickets;
+
+        return response()->json($message);
     }
 
     /**
@@ -140,14 +164,26 @@ class TicketController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        $ticket = Ticket::find($id);
+       /* $ticket = Ticket::find($id);
         $ticket->estado = 'Pagado';
         $ticket->save();
 
-        $name = $request->input('name');
+        $name = $request->input('name');*/
         $surname = $request->input('surname');
-        $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
-        return response()->json($message);
+        $all = $request->all();
+        /*Ticket::find($all[0]['id']);*/
+        $cont=[];
+        foreach($all as $s){
+            $t=Ticket::find($s['id']);
+            $t->estado=$s['estado'];
+            $t->estudiante_id=$s['estudianteco'];
+            $t->save();
+            $cont[]=$s;
+        }
+//        $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
+        /*$message=$surname[0];*/
+
+        return response()->json($cont);
     }
 
     /**
