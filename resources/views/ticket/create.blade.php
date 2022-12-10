@@ -94,7 +94,7 @@
 
                     </table>
                     <p>El precio final es: <span id="preciof"></span></p>
-                    <button id="btnpagar"class="btn btn-success">Pagar</button>
+                    <button type="submit" id="btnpagar"class="btn btn-success">Pagar</button>
                 </div>
             </div>
         </div>
