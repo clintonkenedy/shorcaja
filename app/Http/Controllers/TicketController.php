@@ -32,40 +32,34 @@ class TicketController extends Controller
         if($request->id){
             $id = Crypt::decryptString($request->id);
             // dd($id);
+
             $ticket = Ticket::find($id);
+            $ticket->increment("contador");
 
             // return response()->json($ticket);
-            return view('evento.invitacion', compact('ticket'));
+            // return view('evento.invitacion', compact('ticket'));
+            return view('evento.invi_prueba', compact('ticket'));
         }
-        return view('evento.invi_template');
+        return view('evento.invi_prueba');
     }
+
+    public function qrcreate(Request $request)
+    {
+        return view('qr.qrcreate');
+    }
+
 
     public function qrinvitacion(Request $request)
     {
-        $tickets = Ticket::all();
-        // $id = '2';
-        // $enlaces[] = false;
-        // // dd($tickets);
-        // for ($i=1; $i < 10; $i++) {
-        // }
+        if ($request->desde > $request->hasta) {
+            return "Ingrese bien los números";
+        }
 
-        // $pdf = Pdf::loadView('qr.qrpdf', ['enlace' => $enlace]);
-        // return $pdf->stream();
-
-        return view('qr.qrpdf', compact('tickets'));
-    }
-    public function qrcachibos(Request $request)
-    {
-
-        $tickets = Ticket::all();
-        // $id = '2';
-        // $enlaces[] = false;
-        // // dd($tickets);
-        // for ($i=1; $i < 10; $i++) {
-        // }
-
-        // $pdf = Pdf::loadView('qr.qrpdf', ['enlace' => $enlace]);
-        // return $pdf->stream();
+        try {
+            $tickets = Ticket::all()->where('id','>=',$request->desde)->where('id','<=',$request->hasta);
+        } catch (\Throwable $th) {
+            return "Fuera de Limite";
+        }
 
         return view('qr.qrpdf', compact('tickets'));
     }

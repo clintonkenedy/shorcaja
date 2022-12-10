@@ -20,11 +20,17 @@ use Illuminate\Http\Request;
 //     return view('welcome');
 // });
 
-Route::get('/qrcheck', function () {
-    return view('qr.qrcheck');
-});
+// Route::get('/qrcheck', function () {
+//     return view('qr.qrcheck');
+// });
 
 Route::get('/',[TicketController::class, 'invitacion']);
+// Route::get('qrcreate',[TicketController::class,'qrcreate']);
+// Route::get('generar',[TicketController::class,'qrinvitacion'])->name('qrinvitacion');
+
+Route::group(['middleware'=>['auth']],function(){
+    Route::put('validar/{id}',[TicketController::class,'update_ticket']);
+});
 Route::get('qrcreate',[TicketController::class,'qrinvitacion']);
 Route::put('validar/{id}',[TicketController::class,'update_ticket']);
 Route::get('obtenerall/',[TicketController::class,'obtenerall'])->name('obtenerall');
@@ -43,6 +49,6 @@ Route::get('formulary2',function(){
 });
 Route::post('proccess2',[EstudianteController::class,'gaa']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

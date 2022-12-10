@@ -7,7 +7,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>Recepción al Cachimbo Sistémico</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Ven y disfruta con tus amigos.</p>
+                            <p>Ven y disfruta con tus amigos. <i class="fa fa-circle" aria-hidden="true"></i></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -122,7 +122,7 @@
                     </div>
                 </div> --}}
             </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            {{-- <div class="canvas__open"><i class="fa fa-bars"></i></div> --}}
         </div>
     </header>
     <!-- Header Section End -->
@@ -130,7 +130,7 @@
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="#">
+            <div class="hero__items set-bg2" data-setbg="images/banner1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
@@ -141,16 +141,14 @@
                                 <a href="#" class="primary-btn">Comprar <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
-                                    {{-- <a href="#"><i class="fa fa-twitter"></i></a> --}}
                                     <a href="#"><i class="fa fa-whatsapp"></i></a>
-                                    {{-- <a href="#"><i class="fa fa-instagram"></i></a> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hero__items set-bg" data-setbg="#">
+            <div class="hero__items set-bg2" data-setbg="images/banner2.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
@@ -161,9 +159,7 @@
                                 <a href="#" class="primary-btn">Comprar <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
-                                    {{-- <a href="#"><i class="fa fa-twitter"></i></a> --}}
                                     <a href="#"><i class="fa fa-whatsapp"></i></a>
-                                    {{-- <a href="#"><i class="fa fa-instagram"></i></a> --}}
                                 </div>
                             </div>
                         </div>
@@ -629,17 +625,14 @@
             </div>
         </div>
     </section>
-    <div class="row justify-content-md-center mb-5">
+    {{-- <div class="row justify-content-md-center mb-5">
         <div class="col-lg-12">
             <div class="section-title">
                 <span>Importante</span>
                 <h2>Ubicacion</h2>
             </div>
         </div>
-        <div class="col-md-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6099.385604767474!2d-70.02705696904316!3d-15.83714958070325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d69fb2f91e0bf%3A0x5e9ca17ef9988271!2sLOCAL%20ANTARA!5e0!3m2!1sen!2spe!4v1670208872086!5m2!1sen!2spe" width="600" height="450" style="border:3;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
+    </div> --}}
 
     <!-- Latest Blog Section End -->
 
@@ -649,14 +642,11 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                        <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
+                        <p>Promcion 2022 - II</p>
+                        {{-- <a href="#"><img src="img/payment.png" alt=""></a> --}}
                     </div>
                 </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                {{-- <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
@@ -689,18 +679,13 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <p>Copyright © Diciembre-2022 All rights reserved
                         </p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
