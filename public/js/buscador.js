@@ -25,6 +25,25 @@ container.addEventListener("click", e => {
         let elValor = input.value;
         if (elValor.length > 0) {
             document.getElementById('datalist-name').disabled = true;
+            console.log("<-------------------------------------------------------------->");
+            let result = EsT.filter(est => est.estudiante_id != null);
+            console.log(result);
+
+            result.forEach(j => {
+                if(isNaN(elValor)){
+
+                }
+                else {
+                    if (j.codigo.includes(elValor)) {
+                        // si lo incluye agregalo al array de los seleccionados
+                        if(seleccionados.length <10){
+                            seleccionados.push(j);
+                        }
+                    }
+                }
+            });
+
+
             Es.forEach(j => {
                 if(isNaN(elValor)){
                     // let er=new RegExp(elValor,"i");
@@ -45,12 +64,16 @@ container.addEventListener("click", e => {
                     }
                 }
             });
+
             console.log("--------------");
             console.log(seleccionados);
             //para cada elemento selccionado
             if(seleccionados.length!=0){
 
                 list.classList.add("active");
+                list.innerHTML = seleccionados
+                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
+                    .join("");
                 list.innerHTML = seleccionados
                     .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
                     .join("");

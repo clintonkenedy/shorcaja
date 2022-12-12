@@ -27,17 +27,12 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-
                     <div class="row g-3">
-
                         <div class="col-md-6">
-
-
                             <div id="datalist" >
                                 <label for="exampleDataList" class="form-label">Codigo Estudiante</label>
                                 <input id="datalist-input" class="form-control" type="number" >
                                 <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
-
                                 <ul id="datalist-ul" class="list-group"></ul>
                             </div>
                         </div>
@@ -186,13 +181,13 @@
             })
         })*/
 
-        /*console.log(Es);
-        console.log(EsT);*/
+        console.log(Es);
+        console.log(EsT);
         //console.log(Tk);
         const estados = ['Entregado','Pagado','Usado'];
         const estadoscolor = ['badge bg-warning me-1','badge bg-success me-1','badge bg-danger me-1'];
         let estudiantecodigo;
-
+        let ticketcambios=[];
         function esdutuanteexis(estudiante,nombre,valor){
             if(estudiante){
                 estudiantecodigo=estudiante;
@@ -220,23 +215,29 @@
                     spanticket.textContent=te.codigo;
                     spanticket.id=te.id;
                     let badcont = 0;
+
                     spanticket.onclick=function () {
+                        let cambio = {
+                            id: this.id,
+                            ticket:this.innerText,
+                            estado: '',
+                        };
                         console.log(this.className);
                         console.log("soy un ticket"+this.innerText);
                         if(this.className=="badge bg-warning m-1"){
                             this.className="badge bg-success m-1";
-
-
+                            cambio.estado="Pagado";
                         }
                         else if(this.className=="badge bg-success m-1"){
                             this.className="badge bg-danger m-1";
+                            cambio.estado="Usado";
 
                         }
                         else if(this.className=="badge bg-danger m-1"){
                             this.className="badge bg-warning m-1";
-
+                            cambio.estado="Entregado";
                         }
-
+                        ticketcambios.push(cambio);
                         /*this.parentElement.removeChild(this);*/
                     };
                     /*spanticket.className="";*/
@@ -255,13 +256,13 @@
 
 
         buscarcodigo.onclick = function (v){
-            let ticketcambios=[];
+            //let ticketcambios=[];
             guardarcambios.onclick = function (){
 
                 console.log("guardar"+v.innerText);
                 console.log(v);
                 console.log(estudiantecodigo.id);
-                let tentregados= document.getElementById("ticketsentregados");
+                /*let tentregados= document.getElementById("ticketsentregados");
                 console.log(tentregados.childNodes);
                 tentregados.childNodes.forEach(te=>{
                     let cambio = {
@@ -279,7 +280,7 @@
                         cambio.estado="Usado";
                     }
                     ticketcambios.push(cambio);
-                });
+                });*/
                 console.log(ticketcambios);
                 fetch("actualizar/1", {
                     headers:{
