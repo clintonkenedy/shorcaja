@@ -38,9 +38,7 @@ Route::group(['middleware'=>['auth']],function(){
 });
 // Route::get('qrcreate',[TicketController::class,'qrinvitacion']);
 // Route::put('validar/{id}',[TicketController::class,'update_ticket']);
-Route::get('obtenerall/',[TicketController::class,'obtenerall'])->name('obtenerall');
-Route::get('obtenerest/',[TicketController::class,'obtenerest'])->name('obtenerest');
-Route::get('obtenertick/',[TicketController::class,'obtenertick'])->name('obtenertick');
+
 
 
 

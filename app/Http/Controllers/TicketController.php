@@ -127,21 +127,7 @@ class TicketController extends Controller
 
         return view('ticket.create', compact('estudiantes','estudiantesT','tickets'));
     }
-    public function obtenerall(){
-        $estudiantesT = Ticket::with('estudiante')->get();
 
-        return response()->json($estudiantesT);
-    }
-    public function obtenerest(){
-        $estudiantesT = Estudiante::all();
-
-        return response()->json($estudiantesT);
-    }
-    public function obtenertick(){
-        $estudiantesT = Ticket::all();
-
-        return response()->json($estudiantesT);
-    }
 
     /**
      * Store a newly created resource in storage.

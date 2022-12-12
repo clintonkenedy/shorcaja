@@ -129,7 +129,7 @@
     <script>
         let EsT = {{ Js::from($estudiantesT) }};
         let Es = {{ Js::from($estudiantes) }};
-        let Tk = {{ Js::from($tickets) }};
+        /*let Tk = {{ Js::from($tickets) }};*/
 
         function get1(ruta){
             fetch(ruta,{
@@ -182,8 +182,8 @@
             })
         })*/
 
-        console.log(Es);
-        console.log(EsT);
+        /*console.log(Es);
+        console.log(EsT);*/
         //console.log(Tk);
         const estados = ['Entregado','Pagado','Usado'];
         const estadoscolor = ['badge bg-warning me-1','badge bg-success me-1','badge bg-danger me-1'];
