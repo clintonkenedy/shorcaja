@@ -29,7 +29,7 @@ container.addEventListener("click", e => {
             let result = EsT.filter(est => est.estudiante_id != null);
             console.log(result);
 
-            result.forEach(j => {
+            /*result.forEach(j => {
                 if(isNaN(elValor)){
 
                 }
@@ -41,7 +41,7 @@ container.addEventListener("click", e => {
                         }
                     }
                 }
-            });
+            });*/
 
 
             Es.forEach(j => {
@@ -71,9 +71,9 @@ container.addEventListener("click", e => {
             if(seleccionados.length!=0){
 
                 list.classList.add("active");
-                list.innerHTML = seleccionados
-                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
-                    .join("");
+                /*list.innerHTML = seleccionados
+                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo}</li>`)
+                    .join("");*/
                 list.innerHTML = seleccionados
                     .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
                     .join("");
