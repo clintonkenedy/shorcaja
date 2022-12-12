@@ -24,9 +24,25 @@ use Illuminate\Http\Request;
 //     return view('qr.qrcheck');
 // });
 
+// https://epispromo22.sytes.net/tickets/create
+// https://ingsispromo.sytes.net
+
 Route::get('/',[TicketController::class, 'invitacion']);
 // Route::get('qrcreate',[TicketController::class,'qrcreate']);
 // Route::get('generar',[TicketController::class,'qrinvitacion'])->name('qrinvitacion');
+
+
+
+// Route::get('/', function () {
+//     return redirect('https://epispromo22.sytes.net/');;
+// });
+
+// Route::get('/{$id}', function () {
+//     dd($id);
+//     return redirect('https://epispromo22.sytes.net/{id}');
+// });
+
+
 
 Route::group(['middleware'=>['auth']],function(){
     Route::put('pagar/{id}',[TicketController::class,'pagar_ticket']);

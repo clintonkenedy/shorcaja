@@ -32,17 +32,19 @@ class TicketController extends Controller
     public function invitacion(Request $request)
     {
         if($request->id){
-            $id = Crypt::decryptString($request->id);
-            // dd($id);
+            // $id = Crypt::decryptString($request->id);
+            // // dd($id);
 
-            $ticket = Ticket::find($id);
-            $ticket->increment("contador");
+            // $ticket = Ticket::find($id);
+            // $ticket->increment("contador");
 
-            // return response()->json($ticket);
-            // return view('evento.invitacion', compact('ticket'));
-            return view('evento.invi_prueba', compact('ticket'));
+            // // return response()->json($ticket);
+            // // return view('evento.invitacion', compact('ticket'));
+            // return view('evento.invi_prueba', compact('ticket'));
+            return redirect('https://epispromo22.sytes.net/?id='.$request->id);
         }
-        return view('evento.invi_prueba');
+        return redirect('https://epispromo22.sytes.net/');
+        // return view('evento.invi_prueba');
     }
 
     public function qrcreate(Request $request)
