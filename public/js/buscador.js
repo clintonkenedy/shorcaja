@@ -52,12 +52,12 @@ container.addEventListener("click", e => {
 
                 list.classList.add("active");
                 list.innerHTML = seleccionados
-                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
+                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.codigo_mat}>${o.codigo_mat}</li>`)
                     .join("");
 
             }else{
 
-                list.innerHTML =`<lu class="list-group list-group-flush  ps-3 pt-2 pb-2"  >Nigun Resultado</lu>`;
+                list.innerHTML =`<lu class="list-group list-group-flush  ps-3 pt-2 pb-2" >Nigun Resultado</lu>`;
             }
         }
         else {
@@ -71,7 +71,10 @@ container.addEventListener("click", e => {
         }
     });
     list.addEventListener("click", function(e) {
+
         if (e.target.nodeName.toLocaleLowerCase() === "li") {
+
+            console.log("click en la lista");
             input.value = e.target.innerText;
             input.name=e.target.id;
             console.log("<<<<<<<<");

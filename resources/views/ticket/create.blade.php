@@ -7,6 +7,22 @@
 @endsection()
 
 @section('content')
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                Enviado con exito!
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast1" class="toast text-bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                Datos vacios!
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
@@ -19,7 +35,7 @@
 
                             <div id="datalist" >
                                 <label for="exampleDataList" class="form-label">Codigo Estudiante</label>
-                                <input id="datalist-input" class="form-control" type="number"  >
+                                <input id="datalist-input" class="form-control" type="number" >
                                 <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
 
                                 <ul id="datalist-ul" class="list-group"></ul>
@@ -46,8 +62,9 @@
 
 
                         <div class="col-12">
-                            <button id="buscarcodigo"  class="btn btn-primary">buscar</button>
-                            <button id="resetear"  class="btn btn-primary">limpiar</button>
+                            <button hidden id="buscarcodigo"  class="btn btn-primary btn-lg">buscar</button>
+                            <button id="resetear"  class="btn btn-primary ">Limpiar X</button>
+
                         </div>
 
 
@@ -67,11 +84,14 @@
 
                                 <ul id="datalistticket-ul" class="list-group"></ul>
                             </div>
+                            <div id="alertas">
+
+                            </div>
 
                         </div>
                         <div class="col-md-6">
-                            <label for="inputAddress" class="form-label">precio</label>
-                            <input type="text" class="form-control" id="inputAddress" value="12 soles" disabled>
+                            <label for="inputAddress" class="form-label">Precio</label>
+                            <input type="text" class="form-control" id="inputAddress" value="15 soles" disabled>
                         </div>
                         <div class="col-12">
                             <button id="addticket" class="btn btn-primary">+1 ticket</button>
@@ -93,8 +113,8 @@
                         </thead>
 
                     </table>
-                    <p>El precio final es: <span id="preciof"></span></p>
-                    <button type="submit" id="btnpagar"class="btn btn-success">Pagar</button>
+                    <p>El precio final deberia ser: <span id="preciof"></span></p>
+                    <button type="submit" id="btnpagar"class="btn btn-success">Enviar</button>
                 </div>
             </div>
         </div>
@@ -208,11 +228,17 @@
 
 
 
-        buscarcodigo.onclick = function () {
+        buscarcodigo.onclick = function (v){
+            console.log("fffffffffffffffffffffff");
             document.getElementById("ticketsentregados").innerHTML="";
-            if(input.value.length>0){
-                console.log(input.value.length);
-                let inputValueB = document.getElementById("datalist-input").value;
+            console.log("valor->"+v.innerText);
+            console.log(v.parentNode.parentNode.childNodes[3].id);
+            if(v.parentNode.parentNode.childNodes[3].id=='datalist-input'){
+                console.log("es codigo");
+                console.log(v);
+                //let inputValueB = document.getElementById("datalist-input").value;
+                let inputValueB = v.innerText;
+                console.log("holaaaaa-->"+inputValueB);
                 if(inputValueB===''){
                     console.log("error dato vacio")
                 }else{
@@ -222,17 +248,20 @@
                     esdutuanteexis(estudiante,nombre,valor);
                 }
             }
-            else if(inputn.value.length>0){
-                console.log(inputn.value.length);
-                let inputValueB = document.getElementById("datalist-name").value;
+            else if(v.parentNode.parentNode.childNodes[3].id=='datalist-name'){
+                console.log("es dni");
+                //console.log(inputn.value.length);
+                //let inputValueB = document.getElementById("datalist-name").value;
+                let inputValueB = v.innerText;
                 let inputValueid = document.getElementById("datalist-name").id;
                 console.log("---------->");
-                console.log(inputn.name);
+                console.log(v);
+                console.log("nameee->"+v.id);
                 if(inputValueB===''){
                     console.log("error dato vacio")
                 }else{
                     let codigo = document.getElementById("datalist-input");
-                    let estudiante = Es.find(j => j.dni == inputn.name);
+                    let estudiante = Es.find(j => j.dni == v.id);
                     let valor=estudiante.codigo_mat;
                     esdutuanteexis(estudiante,codigo,valor);
                 }
@@ -287,13 +316,19 @@
                     agregados.push(inputValue);
                     console.log("agregadoooooooooooooooooos");
                     console.log(agregados);
+                    console.log();
                     let ticketobj = {
                         id: ticket.id,
                         codigo: inputValue,
                         estado: '',
                         estudiante_id: input.value,
-                        estudianteco: estudiantecodigo.id,
+                        estudianteco: null,
                     };
+                    if (estudiantecodigo!==undefined){
+                        ticketobj.estudianteco=estudiantecodigo;
+                    }
+
+
 
                     if(agregados.length === new Set(agregados).size){
                         let tr = document.createElement('tr');
@@ -344,7 +379,7 @@
                             ticketss.splice(tr.firstChild.textContent,1);*/
                             //console.log(tbody.childNodes);
                             console.log("dato borrado");
-                            pre=pre-12;
+                            pre=pre-15;
                             const preciof1 = document.getElementById("preciof");
                             preciof1.textContent=pre;
                             //console.log("Se ha clickeado el id "+id);
@@ -373,7 +408,7 @@
                         document.getElementById('resumen').appendChild(fragment);
                         document.getElementById("datalist-ticket").value="";
                         const preciof1 = document.getElementById("preciof");
-                        pre=pre+12;
+                        pre=pre+15;
                         preciof1.textContent=pre;
                         ticketss.push(ticketobj);
 
@@ -387,6 +422,16 @@
                 }
                 else{
                     console.log("codigo rpetido");
+                    alert("codigo repetido");
+                    let div = document.createElement('div');
+                    div.id="coderepe";
+                    div.className="alert alert-warning";
+                    div.textContent="codigo repetido";
+                    document.getElementById("alertas").appendChild(div);
+                    setTimeout(() => {
+                        document.getElementById("coderepe").remove();
+                    }, 1000);
+
                 }
 
                 //duplicados
@@ -397,27 +442,50 @@
 
 
             }
-            // document.getElementById("valueInput").innerHTML = inputValue;
+
 
         });
 
 
-        btnpagar.onclick=function (){
-            console.log("pagar");
+           btnpagar.onclick=function (){
+               console.log("pagar");
+               console.log(!ticketss.length);
+               if(ticketss.length){
+                   post(ticketss,1);
+                   const toastTrigger = document.getElementById('liveToastBtn')
+                   const toastLiveExample = document.getElementById('liveToast')
+                   const toast = new bootstrap.Toast(toastLiveExample)
+
+                   toast.show()
+                   setTimeout(() => {
+                       location.reload()
+                   }, 1500);
 
 
-            post(ticketss,1);
-            location.reload();
-            /*console.log("<{{route('tickets.index')}}>");
 
-            EsT = get1('{{route('obtenerall')}}');
-            Es = get1('{{route('obtenerest')}}');
-            Tk = get1('{{route('obtenertick')}}');
-            console.log(EsT);*/
-            //get();
-            /*console.log(ticketss);
-            console.log(ticketss[0]);*/
-        }
+                   //location.reload();
+               }else {
+
+                   const toastLiveExample = document.getElementById('liveToast1')
+                   const toast = new bootstrap.Toast(toastLiveExample)
+
+                   toast.show()
+                   console.log("no hay nada para enviar");
+                   setTimeout(() => {
+                       location.reload()
+                   }, 1500);
+                   //
+
+
+
+               }
+
+
+
+
+           }
+
+
 
 
     </script>

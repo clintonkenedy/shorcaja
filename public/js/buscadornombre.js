@@ -50,7 +50,7 @@ containern.addEventListener("click", e => {
 
                 listn.classList.add("active");
                 listn.innerHTML = seleccionadosname
-                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" id=${o.dni}>${o.nombre} ${o.apellidop} ${o.apellidom}</li>`)
+                    .map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" onclick="buscarcodigo.onclick(this)" id=${o.dni}>${o.nombre} ${o.apellidop} ${o.apellidom}</li>`)
                     /*.map(o => `<li class="list-group list-group-flush  ps-3 pt-2 pb-2" id=${o.dni}>${o.nombre}</li>`)*/
                     .join("");
 

@@ -206,6 +206,7 @@ class TicketController extends Controller
             $t=Ticket::find($s['id']);
             $t->estado=$s['estado'];
             $t->estudiante_id=$s['estudianteco'];
+            $t->user_id = Auth::user()->id;
             $t->save();
             $cont[]=$s;
         }
