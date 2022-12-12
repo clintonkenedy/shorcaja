@@ -202,6 +202,18 @@ class TicketController extends Controller
 
         return response()->json($cont);
     }
+    public function actualizar_ticket(Request $request,  $id){
+        $all = $request->all();
+        foreach($all as $s){
+            $t=Ticket::find($s['id']);
+            $t->estado=$s['estado'];
+            /*$t->estudiante_id=$s['estudianteco']['id'];*/
+            $t->user_id = Auth::user()->id;
+            $t->save();
+
+        }
+        return response()->json($all);
+    }
 
     /**
      * Remove the specified resource from storage.

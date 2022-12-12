@@ -53,7 +53,8 @@
                                 <ul id="datalistname-ul" class="list-group"></ul>
                             </div>
                         </div>
-                        <h5 id="ticketsentregados"></h5>
+                        <h1 id="ticketsentregados">
+                        </h1>
 
 
 
@@ -64,6 +65,8 @@
                         <div class="col-12">
                             <button hidden id="buscarcodigo"  class="btn btn-primary btn-lg">buscar</button>
                             <button id="resetear"  class="btn btn-lg btn-primary ">Limpiar X</button>
+                            <button type="submit" id="guardarcambios" class="btn btn-lg btn-success">Guardar Cambios</button>
+
 
                         </div>
 
@@ -115,6 +118,7 @@
                     </table>
                     <p>El precio final deberia ser: <span id="preciof"></span></p>
                     <button type="submit" id="btnpagar" class="btn btn-lg btn-success">Enviar</button>
+
                 </div>
             </div>
         </div>
@@ -200,13 +204,13 @@
                     let spanticket=document.createElement("span");
                     switch (te.estado){
                         case 'Pagado':
-                            spanticket.className="badge bg-success me-1";
+                            spanticket.className="badge bg-success m-1";
                             break;
                         case 'Entregado':
-                            spanticket.className="badge bg-warning me-1";
+                            spanticket.className="badge bg-warning m-1";
                             break;
                         case 'Usado':
-                            spanticket.className="badge bg-danger me-1";
+                            spanticket.className="badge bg-danger m-1";
                             break;
                         default:
                             spanticket.className="badge bg-secondary me-1";
@@ -214,6 +218,28 @@
 
 
                     spanticket.textContent=te.codigo;
+                    spanticket.id=te.id;
+                    let badcont = 0;
+                    spanticket.onclick=function () {
+                        console.log(this.className);
+                        console.log("soy un ticket"+this.innerText);
+                        if(this.className=="badge bg-warning m-1"){
+                            this.className="badge bg-success m-1";
+
+
+                        }
+                        else if(this.className=="badge bg-success m-1"){
+                            this.className="badge bg-danger m-1";
+
+                        }
+                        else if(this.className=="badge bg-danger m-1"){
+                            this.className="badge bg-warning m-1";
+
+                        }
+
+                        /*this.parentElement.removeChild(this);*/
+                    };
+                    /*spanticket.className="";*/
                     document.getElementById("ticketsentregados").appendChild(spanticket);
                 });
 
@@ -229,6 +255,58 @@
 
 
         buscarcodigo.onclick = function (v){
+            let ticketcambios=[];
+            guardarcambios.onclick = function (){
+
+                console.log("guardar"+v.innerText);
+                console.log(v);
+                console.log(estudiantecodigo.id);
+                let tentregados= document.getElementById("ticketsentregados");
+                console.log(tentregados.childNodes);
+                tentregados.childNodes.forEach(te=>{
+                    let cambio = {
+                        id: te.id,
+                        ticket:te.innerText,
+                        estado: '',
+                    };
+                    console.log(te.innerText+" "+te.className);
+                    console.log(te);
+                    if(te.className=="badge bg-warning m-1"){
+                        cambio.estado="Entregado";
+                    }else if(te.className=="badge bg-success m-1"){
+                        cambio.estado="Pagado";
+                    }else if(te.className=="badge bg-danger m-1"){
+                        cambio.estado="Usado";
+                    }
+                    ticketcambios.push(cambio);
+                });
+                console.log(ticketcambios);
+                fetch("actualizar/1", {
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    },
+                    method:'PUT',
+                    body: JSON.stringify(ticketcambios)
+                })
+                    .then(response => response.json())
+                    .then(function(result){
+                        //alert(result);
+                        console.log(result);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                const toastTrigger = document.getElementById('liveToastBtn')
+                const toastLiveExample = document.getElementById('liveToast')
+                const toast = new bootstrap.Toast(toastLiveExample)
+
+                toast.show()
+                setTimeout(() => {
+                    location.reload()
+                }, 1500);
+
+            }
             console.log("fffffffffffffffffffffff");
             document.getElementById("ticketsentregados").innerHTML="";
             console.log("valor->"+v.innerText);
@@ -442,6 +520,7 @@
 
 
             }
+            console.log(ticketss);
 
 
         });
