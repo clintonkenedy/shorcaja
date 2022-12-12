@@ -63,7 +63,7 @@
 
                         <div class="col-12">
                             <button hidden id="buscarcodigo"  class="btn btn-primary btn-lg">buscar</button>
-                            <button id="resetear"  class="btn btn-primary ">Limpiar X</button>
+                            <button id="resetear"  class="btn btn-lg btn-primary ">Limpiar X</button>
 
                         </div>
 
@@ -94,7 +94,7 @@
                             <input type="text" class="form-control" id="inputAddress" value="15 soles" disabled>
                         </div>
                         <div class="col-12">
-                            <button id="addticket" class="btn btn-primary">+1 ticket</button>
+                            <button id="addticket" class="btn btn-lg btn-primary">+1 ticket</button>
                         </div>
 
                     </div>
@@ -114,7 +114,7 @@
 
                     </table>
                     <p>El precio final deberia ser: <span id="preciof"></span></p>
-                    <button type="submit" id="btnpagar"class="btn btn-success">Enviar</button>
+                    <button type="submit" id="btnpagar" class="btn btn-lg btn-success">Enviar</button>
                 </div>
             </div>
         </div>
