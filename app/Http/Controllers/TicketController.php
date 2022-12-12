@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Estudiante;
+use App\Models\User;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use QrCode;
@@ -90,6 +91,26 @@ class TicketController extends Controller
         // dd($message);
         // return response()->json($message);
         return back()->withInput();
+    }
+
+    public function buscar_ticket(Request $request, $codigo)
+    {
+        $ticket = Ticket::where('codigo', $codigo)->first();
+        if (isset($ticket)) {
+
+            $user_id = User::find($ticket->user_id);
+            return response()->json([
+                'status' => 'ok',
+                '# ticket' => $ticket->codigo,
+                'estado' => $ticket->estado,
+                'estudiante' => isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre." ".$ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom : "no hay",
+                'est_promo22' => isset($user_id->name) ? $user_id->name : "Sin asignar",
+            ]);
+        }
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Intente con otro ticket',
+        ]);
     }
 
     public function entregar_ticket(Request $request, $id)

@@ -180,7 +180,7 @@
         </div>
     </header>
     <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-xs-12 col-md-6 offset-md-3">
             <div class="card mt-3">
                 <div class="card-body">
                     <p class="text-muted">Se muestran tus tickets entregados/pagados: </p>
@@ -219,7 +219,7 @@
                         </table>
                         @else
                         <p> <b>No tienes tickets agregados 😭</b></p>
-                      @endif
+                        @endif
                     </div>
                 </div>
             </div>
