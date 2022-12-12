@@ -200,7 +200,10 @@ class TicketController extends Controller
         foreach($all as $s){
             $t=Ticket::find($s['id']);
             $t->estado=$s['estado'];
-            $t->estudiante_id=$s['estudianteco']['id'];
+            if($s['estudianteco']!=''){
+                $t->estudiante_id=$s['estudianteco']['id'];
+            }
+
             $t->user_id = Auth::user()->id;
             $t->save();
             $cont[]=$s;
@@ -212,7 +215,7 @@ class TicketController extends Controller
     }
     public function actualizar_ticket(Request $request,  $id){
         $all = $request->all();
-        foreach($all as $s){    
+        foreach($all as $s){
             $t=Ticket::find($s['id']);
             $t->estado=$s['estado'];
             /*$t->estudiante_id=$s['estudianteco']['id'];*/
