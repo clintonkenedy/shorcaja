@@ -181,13 +181,13 @@
                     <center>
                         <h5 class="card-title">Ticket # <b>{{$ticket->codigo}}</b>
                             @if ($ticket->estado==="Usado")
-                            <h5 class="text-white"><span class="badge bg-secondary"> {{$ticket->estado}} </span></h5>
-                            @elseif ($ticket->estado==="Pagado")
                             <h5 class="text-white"><span class="badge bg-danger"> {{$ticket->estado}} </span></h5>
-                            @elseif ($ticket->estado==="Entregado")
-                            <h5 class="text-white"><span class="badge bg-info"> {{$ticket->estado}} </span></h5>
-                            @elseif ($ticket->estado==="Libre")
+                            @elseif ($ticket->estado==="Pagado")
                             <h5 class="text-white"><span class="badge bg-success"> {{$ticket->estado}} </span></h5>
+                            @elseif ($ticket->estado==="Entregado")
+                            <h5 class="text-white"><span class="badge bg-warning"> {{$ticket->estado}} </span></h5>
+                            @elseif ($ticket->estado==="Libre")
+                            <h5 class="text-white"><span class="badge bg-secondary"> {{$ticket->estado}} </span></h5>
                             @endif
                         </h5>
 
@@ -197,12 +197,52 @@
                         @else
                             <p class="card-text">Sin Estudiante Asignado</p>
                         @endif
-                            <form action="{{url("validar/$ticket->id")}}" method="post">
+                            @if ($ticket->estado == "Entregado" || $ticket->estado == "Pagado" || $ticket->estado == "Usado")
+                                <form action="{{url("entregar/$ticket->id")}}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                                    <button type="submit" class="btn btn-lg btn-warning mb-2" disabled>Entregado 💪🏼</button>
+                                </form>
+                            @else
+                                <form action="{{url("entregar/$ticket->id")}}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                                    <button type="submit" class="btn btn-lg btn-warning mb-2" style="border-color: black ">Entregado 💪🏼</button>
+                                </form>
+                            @endif
+                            @if ($ticket->estado == "Pagado" || $ticket->estado == "Usado")
+                            <form action="{{url("pagar/$ticket->id")}}" method="post">
                                 @method('PUT')
                                 @csrf
-                                <button type="submit" class="btn btn-lg btn-success" disabled>Pagado $</button>
+                                <button type="submit" class="btn btn-lg btn-success mb-2" disabled>Pagado 💵</button>
                             </form>
-                                <button type="submit" class="btn btn-lg btn-secondary mt-3" disabled>Usado ✅</button>
+                            @else
+                                <form action="{{url("pagar/$ticket->id")}}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                                    <button type="submit" class="btn btn-lg btn-success mb-2" style="border-color: black ">Pagado 💵</button>
+                                </form>
+                            @endif
+
+
+                            @if ($ticket->estado == "Usado")
+                            <form action="{{url("usar/$ticket->id")}}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <button type="submit" class="btn btn-lg btn-danger mb-2" disabled>Usado ✅</button>
+                            </form>
+                            @else
+                                <form action="{{url("usar/$ticket->id")}}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                                    <button type="submit" class="btn btn-lg btn-danger mb-2" style="border-color: black ">Usado ✅</button>
+                                </form>
+                            @endif
+                            {{-- <form action="{{url("usar/$ticket->id")}}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <button type="submit" class="btn btn-lg btn-danger mb-2" disabled>Usado ✅</button>
+                            </form> --}}
 
 
                     </center>
@@ -225,9 +265,22 @@
                             <p>Ven y disfruta con tus amigos.</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5 text-white">
+                    @if ( isset($ticket->estudiante))
 
+                    <div class="col-lg-6 col-md-5 text-white">
+                        <center>
+                            # Ticket: <span class="badge bg-light text-dark">{{ $ticket->codigo }}</span> - {{ $ticket->estudiante->nombre." ".$ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom}}
+                        </center>
                     </div>
+                    @else
+                        @if (isset($ticket))
+                        <div class="col-lg-6 col-md-5 text-white">
+                            <center>
+                                # Ticket: <span class="badge bg-light text-dark">{{ $ticket->codigo }}</span>
+                            </center>
+                        </div>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>

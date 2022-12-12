@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('estado',['Libre','Entregado','Pagado','Usado'])->nullable();
             $table->bigInteger('contador')->default(0)->nullable();
             $table->foreignId('estudiante_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

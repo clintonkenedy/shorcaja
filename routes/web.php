@@ -29,10 +29,15 @@ Route::get('/',[TicketController::class, 'invitacion']);
 // Route::get('generar',[TicketController::class,'qrinvitacion'])->name('qrinvitacion');
 
 Route::group(['middleware'=>['auth']],function(){
-    Route::put('validar/{id}',[TicketController::class,'update_ticket']);
+    Route::put('pagar/{id}',[TicketController::class,'pagar_ticket']);
+    Route::put('entregar/{id}',[TicketController::class,'entregar_ticket']);
+    Route::put('usar/{id}',[TicketController::class,'usar_ticket']);
+    Route::resource('estudiantes',EstudianteController::class);
+    Route::resource('tickets',TicketController::class);
+    Route::get('est',[EstudianteController::class,'est']);
 });
-Route::get('qrcreate',[TicketController::class,'qrinvitacion']);
-Route::put('validar/{id}',[TicketController::class,'update_ticket']);
+// Route::get('qrcreate',[TicketController::class,'qrinvitacion']);
+// Route::put('validar/{id}',[TicketController::class,'update_ticket']);
 Route::get('obtenerall/',[TicketController::class,'obtenerall'])->name('obtenerall');
 Route::get('obtenerest/',[TicketController::class,'obtenerest'])->name('obtenerest');
 Route::get('obtenertick/',[TicketController::class,'obtenertick'])->name('obtenertick');
@@ -40,14 +45,13 @@ Route::get('obtenertick/',[TicketController::class,'obtenertick'])->name('obtene
 
 
 
-Route::resource('estudiantes',EstudianteController::class);
-Route::resource('tickets',TicketController::class);
-Route::get('est',[EstudianteController::class,'est']);
+
+
 //Route::post('gaa',[EstudianteController::class,'gaa']);
-Route::get('formulary2',function(){
-    return view('estudiante.prueba');
-});
-Route::post('proccess2',[EstudianteController::class,'gaa']);
+// Route::get('formulary2',function(){
+//     return view('estudiante.prueba');
+// });
+// Route::post('proccess2',[EstudianteController::class,'gaa']);
 
 Auth::routes(['register' => false]);
 

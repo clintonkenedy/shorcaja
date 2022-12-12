@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Auth;
 use App\Models\Estudiante;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -64,15 +66,48 @@ class TicketController extends Controller
         return view('qr.qrpdf', compact('tickets'));
     }
 
-    public function update_ticket(Request $request, $id)
+    public function pagar_ticket(Request $request, $id)
     {
+        // dd(Auth::user()->id);
         $ticket = Ticket::find($id);
         $ticket->estado = 'Pagado';
+        $ticket->user_id = Auth::user()->id;
         $ticket->save();
 
-        $name = $request->input('name');
-        $surname = $request->input('surname');
-        $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
+
+
+        // $name = $request->input('name');
+        // $surname = $request->input('surname');
+        // $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
+        // dd($message);
+        // return response()->json($message);
+        return back()->withInput();
+    }
+
+    public function entregar_ticket(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        $ticket->estado = 'Entregado';
+        $ticket->user_id = Auth::user()->id;
+        $ticket->save();
+
+        // $name = $request->input('name');
+        // $surname = $request->input('surname');
+        // $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
+        // dd($message);
+        // return response()->json($message);
+        return back()->withInput();
+    }
+    public function usar_ticket(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        $ticket->estado = 'Usado';
+        $ticket->user_id = Auth::user()->id;
+        $ticket->save();
+
+        // $name = $request->input('name');
+        // $surname = $request->input('surname');
+        // $message = "tu nombre es ".$ticket->codigo."y tu apellido es ".$surname."";
         // dd($message);
         // return response()->json($message);
         return back()->withInput();
