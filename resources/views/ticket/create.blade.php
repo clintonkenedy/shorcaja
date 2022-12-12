@@ -2,7 +2,146 @@
 
 @section('css')
 
+<style>
+    html,
+        body {
+            height: 100%;
+            font-family: "Nunito Sans", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            color: #111111;
+            font-weight: 400;
+            font-family: "Nunito Sans", sans-serif;
+        }
+
+        h1 {
+	        font-size: 70px;
+        }
+
+        h2 {
+            font-size: 36px;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 24px;
+        }
+
+        h5 {
+            font-size: 18px;
+        }
+
+        h6 {
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 15px;
+            font-family: "Nunito Sans", sans-serif;
+            color: #3d3d3d;
+            font-weight: 400;
+            line-height: 25px;
+            margin: 0 0 15px 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        input:focus,
+        select:focus,
+        button:focus,
+        textarea:focus {
+            outline: none;
+        }
+
+        a:hover,
+        a:focus {
+            text-decoration: none;
+            outline: none;
+            color: #ffffff;
+        }
+
+        ul,
+        ol {
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background: #ffffff;
+        }
+
+        .header__top {
+            background: #111111;
+            padding: 10px 0;
+        }
+
+        .header__top__left p {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        .header__top__right {
+            text-align: right;
+        }
+        .header__logo {
+            padding: 30px 0;
+        }
+
+        .header__logo a {
+            display: inline-block;
+        }
+
+        .section-title {
+            margin-top: 50px;
+            margin-bottom: 45px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: #e53637;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-title h2 {
+            color: #111111;
+            /* font-weight: 700; */
+            line-height: 46px;
+        }
+        .card-img-top{
+            width: auto;
+            height: 350px;
+        }
+        .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
+        /* .fitting-image {
+            width: 150px;
+            height: 150px;
+            object-fit: <some value>;
+        } */
+        .reset-this-root {
+            all: initial;
+            * {
+                all: unset;
+            }
+        }
+</style>
 
 @endsection()
 
@@ -22,9 +161,26 @@
             </div>
         </div>
     </div>
-
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3 col-md-5">
+                        <div class="header__top__left">
+                            <p>Conectado <i class="reset-this-root bi bi-circle-fill" style="color: green"></i>
+                                <a href="/tickets/entregados" class="btn btn-sm btn-light" style="float: right">Mis Tickets Entregrados</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-5 text-white mt-1">
+                        Usuario: {{Auth::user()->name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="row">
-        <div class="col-md-6 offset-md-3 mt-5">
+        <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="row g-3">

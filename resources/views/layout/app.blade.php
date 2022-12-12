@@ -6,9 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tickets</title>
-{{--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
---}}
     <link rel="stylesheet" href="{{asset('css/buscador.css')}}">
     <link rel="stylesheet" href="{{asset('css/buscadorname.css')}}">
     <link rel="stylesheet" href="{{asset('css/buscadorticket.css')}}">
