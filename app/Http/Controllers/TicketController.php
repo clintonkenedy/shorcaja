@@ -50,6 +50,14 @@ class TicketController extends Controller
         return view('qr.qrcreate');
     }
 
+    public function ticket_entregados(Request $request)
+    {
+        // dd("asd");
+        $tickets = Ticket::where("user_id", Auth::user()->id)->get();
+        // dd($tickets);
+        return view('ticket.entregados', compact("tickets"));
+    }
+
 
     public function qrinvitacion(Request $request)
     {
@@ -204,7 +212,7 @@ class TicketController extends Controller
     }
     public function actualizar_ticket(Request $request,  $id){
         $all = $request->all();
-        foreach($all as $s){
+        foreach($all as $s){    
             $t=Ticket::find($s['id']);
             $t->estado=$s['estado'];
             /*$t->estudiante_id=$s['estudianteco']['id'];*/
