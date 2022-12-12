@@ -191,7 +191,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Cod Est</th>
-                                <th scope="col">Ticket</th>
+                                <th scope="col"># Ticket</th>
                                 <th scope="col">Estado</th>
                             </tr>
                             </thead>
@@ -199,8 +199,8 @@
 
                                     @foreach ($tickets as $ticket)
                                     <tr>
-                                        <td>{{$ticket->id}}</td>
-                                        <td>{{$ticket->estudiante->codigo_mat}}</td>
+                                        <td>{{isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre : "No hay estudent"}}</td>
+                                        <td>{{isset($ticket->estudiante->codigo_mat) ? $ticket->estudiante->codigo_mat : "No hay estudent"}}</td>
                                         <td>{{$ticket->codigo}}</td>
                                         @if ($ticket->estado=="Entregado")
                                         <td class="badge bg-warning">{{$ticket->estado}}</td>
