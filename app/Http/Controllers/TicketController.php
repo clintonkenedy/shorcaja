@@ -187,11 +187,12 @@ class TicketController extends Controller
         $surname = $request->input('surname');
         $all = $request->all();
         /*Ticket::find($all[0]['id']);*/
+        // dd($all[0]['estudianteco']['id']);
         $cont=[];
         foreach($all as $s){
             $t=Ticket::find($s['id']);
             $t->estado=$s['estado'];
-            $t->estudiante_id=$s['estudianteco'];
+            $t->estudiante_id=$s['estudianteco']['id'];
             $t->user_id = Auth::user()->id;
             $t->save();
             $cont[]=$s;
