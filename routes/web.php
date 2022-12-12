@@ -48,6 +48,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::put('pagar/{id}',[TicketController::class,'pagar_ticket']);
     Route::put('entregar/{id}',[TicketController::class,'entregar_ticket']);
     Route::put('usar/{id}',[TicketController::class,'usar_ticket']);
+    Route::put('tickets/actualizar/{id}',[TicketController::class,'actualizar_ticket']);
     Route::resource('estudiantes',EstudianteController::class);
     Route::resource('tickets',TicketController::class);
     Route::get('est',[EstudianteController::class,'est']);
