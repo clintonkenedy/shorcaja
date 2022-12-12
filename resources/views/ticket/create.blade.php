@@ -693,9 +693,9 @@
                    const toast = new bootstrap.Toast(toastLiveExample)
 
                    toast.show()
-                   /*setTimeout(() => {
+                   setTimeout(() => {
                        location.reload()
-                   }, 1500);*/
+                   }, 1500);
 
 
 
