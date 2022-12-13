@@ -186,43 +186,39 @@
             <div class="col-xs-12 col-md-6 offset-md-3">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <p class="text-muted">Se muestran tus tickets entregados/pagados: </p>
-                        <div class="table-responsive">
-                            @if (count($tickets)>0)
-                            <table class="table" id="resumen">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Estudiante</th>
-                                    <th scope="col">Codigo</th>
-                                    <th scope="col">Ticket</th>
-                                    <th scope="col">Estado</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="b_ticket"> <b>Buscar # Ticket</b></label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div class="col-xs-2 text-end mt-1">
+                                <button id="b_ticket" class="btn btn-success" onclick="buscar_ticket()">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3" id="tarjeta2" hidden>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="table-responsive">
+                                    <table class="table" id="ticket_tabla">
+                                        <thead>
+                                            <tr>
+                                                <th>Ticket</th>
+                                                <th>Estado</th>
+                                                <th>Estudiante</th>
+                                                <th>Promo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr id="table_tr">
 
-                                        @foreach ($tickets as $ticket)
-                                        <tr>
-                                            <td>{{isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre : "No hay estudent"}}</td>
-                                            <td>{{isset($ticket->estudiante->codigo_mat) ? $ticket->estudiante->codigo_mat : "No hay estudent"}}</td>
-                                            <td>{{$ticket->codigo}}</td>
-                                            @if ($ticket->estado=="Entregado")
-                                            <td class="badge bg-warning">{{$ticket->estado}}</td>
-                                            @endif
-                                            @if ($ticket->estado=="Pagado")
-                                            <td class="badge bg-success">{{$ticket->estado}}</td>
-                                            @endif
-                                            @if ($ticket->estado=="Usado")
-                                            <td class="badge bg-danger">{{$ticket->estado}}</td>
-                                            @endif
-
-                                        </tr>
-                                        @endforeach
-
-                                </tbody>
-                            </table>
-                            @else
-                            <p> <b>No tienes tickets agregados 😭</b></p>
-                            @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,6 +230,61 @@
 @stop
 
 @section('js')
+    <script>
+        const buscar_ticket = () => {
+            console.log(document.getElementsByTagName("input")[0].value);
+            const t_id = document.getElementsByTagName("input")[0].value;
+            find_ticket(t_id);
 
+        }
+
+        const find_ticket = async (id) => {
+            const tr = document.getElementById("table_tr")
+            tr.innerHTML= "";
+            try {
+                const resp = await fetch('/tickets/buscar/'+id);
+
+                if (!resp.ok) {
+                    console.log("error");
+                }
+                const data = await resp.json();
+                console.log(data);
+
+                document.getElementById("tarjeta2").hidden = false;
+                // document.getElementById("ticket_tabla").hidden = false;
+                const tdTicket = document.createElement("td");
+                const tdEstado = document.createElement("td");
+                const tdEstudiante = document.createElement("td");
+                const tdPromo = document.createElement("td");
+                tdTicket.innerText = data.ticket;
+                if (data.estado == "Entregado") {
+                    tdEstado.classList.add("badge");
+                    tdEstado.classList.add("bg-warning");
+                }
+                if (data.estado == "Usado") {
+                    tdEstado.classList.add("badge");
+                    tdEstado.classList.add("bg-danger");
+                }
+                if (data.estado == "Pagado") {
+                    tdEstado.classList.add("badge");
+                    tdEstado.classList.add("bg-success");
+                }
+                if (data.estado == "Libre") {
+                    tdEstado.classList.add("badge");
+                    tdEstado.classList.add("bg-primary");
+                }
+                tdEstado.innerText = data.estado;
+                tdEstudiante.innerText = data.estudiante;
+                tdPromo.innerText = data.est_promo22;
+                tr.appendChild(tdTicket);
+                tr.appendChild(tdEstado);
+                tr.appendChild(tdEstudiante);
+                tr.appendChild(tdPromo);
+
+            } catch (error) {
+                console.log("Sin respuesta");
+            }
+        }
+    </script>
 @endsection
 

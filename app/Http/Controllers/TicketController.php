@@ -104,6 +104,10 @@ class TicketController extends Controller
         // return response()->json($message);
         return back()->withInput();
     }
+    public function buscar()
+    {
+        return view("ticket.buscar");
+    }
 
     public function buscar_ticket(Request $request, $codigo)
     {
@@ -113,7 +117,7 @@ class TicketController extends Controller
             $user_id = User::find($ticket->user_id);
             return response()->json([
                 'status' => 'ok',
-                '# ticket' => $ticket->codigo,
+                'ticket' => $ticket->codigo,
                 'estado' => $ticket->estado,
                 'estudiante' => isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre." ".$ticket->estudiante->apellidop." ".$ticket->estudiante->apellidom : "no hay",
                 'est_promo22' => isset($user_id->name) ? $user_id->name : "Sin asignar",

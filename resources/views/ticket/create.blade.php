@@ -167,14 +167,15 @@
                 <div class="row">
                     <div class="col-xs-3 col-md-5">
                         <div class="header__top__left">
-                            <p>Conectado <i class="reset-this-root bi bi-circle-fill" style="color: green"></i>
+                            <p><a href="/tickets/buscar" class="btn btn-sm btn-light">Buscar Ticket</a>
                                 <a href="/tickets/entregados" class="btn btn-sm btn-light" style="float: right">Mis Tickets Entregrados</a>
+
                             </p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-5 text-white mt-1">
                         <small style="">
-                            {{Auth::user()->name}}
+                            {{Auth::user()->name}}  <i class="reset-this-root bi bi-circle-fill" style="color: green"></i>
                         </small>
                         <a id="a_total_tickets" href="#" class="btn btn-sm btn-secondary" onclick="total_tickets()" style="float: right"></a>
                     </div>
@@ -292,7 +293,7 @@
                     console.log("Server conexion error");
                 }
                 const data = await resp.json();
-                document.getElementById("a_total_tickets").innerText = "Total Tickets: "+ data.total_tickets;
+                document.getElementById("a_total_tickets").innerText = "Tickets: "+ data.total_tickets;
             } catch (error) {
                 console.log("Sin respuesta");
             }
