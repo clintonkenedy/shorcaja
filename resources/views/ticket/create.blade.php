@@ -173,7 +173,9 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-5 text-white mt-1">
-                        Usuario: {{Auth::user()->name}}
+                        <small style="">
+                            {{Auth::user()->name}}
+                        </small>
                         <a id="a_total_tickets" href="#" class="btn btn-sm btn-secondary" onclick="total_tickets()" style="float: right"></a>
                     </div>
                 </div>

@@ -173,7 +173,9 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-5 text-white mt-1">
-                        Usuario: {{Auth::user()->name}}
+                        <small>
+                            {{Auth::user()->name}}
+                        </small>
                     </div>
                 </div>
             </div>
