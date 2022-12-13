@@ -75,6 +75,18 @@ class TicketController extends Controller
         return view('qr.qrpdf', compact('tickets'));
     }
 
+    public function tickets_total()
+    {
+        $tickets = Ticket::where("estado", "!=", "Libre")->get();
+        // dd($tickets);
+
+        // return view('qr.qrpdf', compact('tickets'));
+        return response()->json([
+            'status' => 'ok',
+            'total_tickets' => count($tickets),
+        ]);
+    }
+
     public function pagar_ticket(Request $request, $id)
     {
         // dd(Auth::user()->id);

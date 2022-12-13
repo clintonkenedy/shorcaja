@@ -174,107 +174,101 @@
                     </div>
                     <div class="col-xs-6 col-md-5 text-white mt-1">
                         Usuario: {{Auth::user()->name}}
+                        <a id="a_total_tickets" href="#" class="btn btn-sm btn-secondary" onclick="total_tickets()" style="float: right"></a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div id="datalist" >
-                                <label for="exampleDataList" class="form-label">Codigo Estudiante</label>
-                                <input id="datalist-input" class="form-control" type="number" >
-                                <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
-                                <ul id="datalist-ul" class="list-group"></ul>
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div id="datalist" >
+                                    <label for="exampleDataList" class="form-label">Codigo Estudiante</label>
+                                    <input id="datalist-input" class="form-control" type="number" >
+                                    <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
+                                    <ul id="datalist-ul" class="list-group"></ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+
+                                <div id="datalistname" >
+                                    <label for="exampleDataList" class="form-label">Nombre</label>
+                                    <input id="datalist-name" class="form-control" type="text">
+                                    <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
+
+                                    <ul id="datalistname-ul" class="list-group"></ul>
+                                </div>
+                            </div>
+                            <h3 id="ticketsentregados">
+                            </h3>
+
+                            <div class="col-12">
+                                <button hidden id="buscarcodigo"  class="btn btn-primary btn-lg">buscar</button>
+                                <button id="resetear"  class="btn btn-lg btn-primary ">Limpiar X</button>
+                                <button type="submit" id="guardarcambios" class="btn btn-lg btn-success">Guardar Cambios</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
 
-                        <div class="col-md-6">
+                        <div class="row g-3">
+                            <div class="col-md-6">
 
+                                <div id="datalistticket" >
+                                    <label for="exampleDataList" class="form-label">Nro Ticket</label>
+                                    <input id="datalist-ticket" class="form-control" type="text">
+                                    <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
 
-                            <div id="datalistname" >
-                                <label for="exampleDataList" class="form-label">Nombre</label>
-                                <input id="datalist-name" class="form-control" type="text">
-                                <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
+                                    <ul id="datalistticket-ul" class="list-group"></ul>
+                                </div>
+                                <div id="alertas">
 
-                                <ul id="datalistname-ul" class="list-group"></ul>
+                                </div>
+
                             </div>
-                        </div>
-                        <h3 id="ticketsentregados">
-                        </h3>
-
-
-
-
-
-
-
-                        <div class="col-12">
-                            <button hidden id="buscarcodigo"  class="btn btn-primary btn-lg">buscar</button>
-                            <button id="resetear"  class="btn btn-lg btn-primary ">Limpiar X</button>
-                            <button type="submit" id="guardarcambios" class="btn btn-lg btn-success">Guardar Cambios</button>
-
+                            <div class="col-md-6">
+                                <label for="inputAddress" class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="inputAddress" value="15 soles" disabled>
+                            </div>
+                            <div class="col-12">
+                                <button id="addticket" class="btn btn-lg btn-primary">+1 ticket</button>
+                            </div>
 
                         </div>
 
+
+                        <table class="table" id="resumen">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Cod Est</th>
+                                <th scope="col">Ticket</th>
+                                <th scope="col">Estado</th>
+
+                                <th scope="col">Del</th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                        <p>El precio final deberia ser: <span id="preciof"></span></p>
+                        <button type="submit" id="btnpagar" class="btn btn-lg btn-success">Enviar</button>
 
                     </div>
                 </div>
             </div>
-            <div class="card mt-3">
-                <div class="card-body">
 
-                    <div class="row g-3">
-                        <div class="col-md-6">
-
-                            <div id="datalistticket" >
-                                <label for="exampleDataList" class="form-label">Nro Ticket</label>
-                                <input id="datalist-ticket" class="form-control" type="text">
-                                <i id="datalist-icon" class="icon iconfont icon-arrow"></i>
-
-                                <ul id="datalistticket-ul" class="list-group"></ul>
-                            </div>
-                            <div id="alertas">
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputAddress" class="form-label">Precio</label>
-                            <input type="text" class="form-control" id="inputAddress" value="15 soles" disabled>
-                        </div>
-                        <div class="col-12">
-                            <button id="addticket" class="btn btn-lg btn-primary">+1 ticket</button>
-                        </div>
-
-                    </div>
-
-
-                    <table class="table" id="resumen">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Cod Est</th>
-                            <th scope="col">Ticket</th>
-                            <th scope="col">Estado</th>
-
-                            <th scope="col">Del</th>
-                        </tr>
-                        </thead>
-
-                    </table>
-                    <p>El precio final deberia ser: <span id="preciof"></span></p>
-                    <button type="submit" id="btnpagar" class="btn btn-lg btn-success">Enviar</button>
-
-                </div>
-            </div>
         </div>
-
     </div>
+
 
 
 
@@ -282,6 +276,26 @@
 
 @section('js')
     <script>
+        document.getElementById("a_total_tickets").innerText = "loading...";
+
+        setInterval(function(){
+            total_tickets();
+        },3000);
+
+        const total_tickets = async () => {
+            try {
+                const resp = await fetch('/tickets/total/');
+
+                if (!resp.ok) {
+                    console.log("Server conexion error");
+                }
+                const data = await resp.json();
+                document.getElementById("a_total_tickets").innerText = "Total Tickets: "+ data.total_tickets;
+            } catch (error) {
+                console.log("Sin respuesta");
+            }
+        }
+
         let EsT = {{ Js::from($estudiantesT) }};
         let Es = {{ Js::from($estudiantes) }};
         /*let Tk = {{ Js::from($tickets) }};*/

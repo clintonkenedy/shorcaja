@@ -179,55 +179,55 @@
             </div>
         </div>
     </header>
-    <div class="row">
-        <div class="col-xs-12 col-md-6 offset-md-3">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <p class="text-muted">Se muestran tus tickets entregados/pagados: </p>
-                    <div class="table-responsive">
-                        @if (count($tickets)>0)
-                        <table class="table" id="resumen">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Cod Est</th>
-                                <th scope="col"># Ticket</th>
-                                <th scope="col">Estado</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 offset-md-3">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p class="text-muted">Se muestran tus tickets entregados/pagados: </p>
+                        <div class="table-responsive">
+                            @if (count($tickets)>0)
+                            <table class="table" id="resumen">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Estudiante</th>
+                                    <th scope="col">Cod Est</th>
+                                    <th scope="col"># Ticket</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                                    @foreach ($tickets as $ticket)
-                                    <tr>
-                                        <td>{{isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre : "No hay estudent"}}</td>
-                                        <td>{{isset($ticket->estudiante->codigo_mat) ? $ticket->estudiante->codigo_mat : "No hay estudent"}}</td>
-                                        <td>{{$ticket->codigo}}</td>
-                                        @if ($ticket->estado=="Entregado")
-                                        <td class="badge bg-warning">{{$ticket->estado}}</td>
-                                        @endif
-                                        @if ($ticket->estado=="Pagado")
-                                        <td class="badge bg-success">{{$ticket->estado}}</td>
-                                        @endif
-                                        @if ($ticket->estado=="Usado")
-                                        <td class="badge bg-danger">{{$ticket->estado}}</td>
-                                        @endif
+                                        @foreach ($tickets as $ticket)
+                                        <tr>
+                                            <td>{{isset($ticket->estudiante->nombre) ? $ticket->estudiante->nombre : "No hay estudent"}}</td>
+                                            <td>{{isset($ticket->estudiante->codigo_mat) ? $ticket->estudiante->codigo_mat : "No hay estudent"}}</td>
+                                            <td>{{$ticket->codigo}}</td>
+                                            @if ($ticket->estado=="Entregado")
+                                            <td class="badge bg-warning">{{$ticket->estado}}</td>
+                                            @endif
+                                            @if ($ticket->estado=="Pagado")
+                                            <td class="badge bg-success">{{$ticket->estado}}</td>
+                                            @endif
+                                            @if ($ticket->estado=="Usado")
+                                            <td class="badge bg-danger">{{$ticket->estado}}</td>
+                                            @endif
 
-                                    </tr>
-                                    @endforeach
+                                        </tr>
+                                        @endforeach
 
-                            </tbody>
-                        </table>
-                        @else
-                        <p> <b>No tienes tickets agregados 😭</b></p>
-                        @endif
+                                </tbody>
+                            </table>
+                            @else
+                            <p> <b>No tienes tickets agregados 😭</b></p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
     </div>
-
-
 
 @stop
 
